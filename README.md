@@ -13,7 +13,7 @@ python3 main.py --config lapnet/configs/benzene_dimer/benzene_dimer.py:4.95 --co
 
 ## Install on slurm cluster (Vector for example)
 
-Optional but recommended: Mamba (better conda)
+Optional but recommended: Mamba, the better conda
 ```bash
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 bash Miniforge3-$(uname)-$(uname -m).sh
@@ -25,6 +25,8 @@ source ~/.bashrc
 ```bash
 module avail
 
+mamba deactivate
+mamba remove --name ehc --all
 mamba create -n ehc python=3.10 -y
 mamba activate ehc
 module load cuda-11.8
@@ -38,6 +40,5 @@ git clone https://github.com/YWolfeee/lapjax.git
 pip install ./lapjax
 
 git clone https://github.com/bytedance/LapNet.git
-cd LapNet
-pip install .
+pip install ./LapNet
 ```
