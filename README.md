@@ -15,8 +15,8 @@ python3 main.py --config lapnet/configs/benzene_dimer/benzene_dimer.py:4.95 --co
 Run via sbatch
 ```bash
 cd ehc
-sbatch launchslurm --config lapnet/configs/ferminet_systems.py --config.system.molecule_name CH4
-sbatch launchslurm --config lapnet/configs/benzene_dimer/benzene_dimer.py:4.95 --config.pretrain.iterations 50000 --config.pretrain.basis augccpvd --config.optim.forward_laplacian=False
+sbatch launchslurm.slrm --config ~/ehc/LapNet/lapnet/configs/ferminet_system_configs.py --config.system.molecule_name CH4
+sbatch launchslurm.slrm --config ~/ehc/LapNet/lapnet/configs/benzene_dimer/benzene_dimer.py:4.95 --config.pretrain.iterations 50000 --config.pretrain.basis augccpvd --config.optim.forward_laplacian=False
 ```
 
 ## Install on slurm cluster (Vector for example)
@@ -57,7 +57,13 @@ pip install ./LapNet
 # https://www.tensorflow.org/install/source#gpu
 # we want: https://storage.googleapis.com/tensorflow/versions/2.13.0/tensorflow-2.13.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 pip install tensorflow[and-cuda]==2.12
-pip install tensorrt==8.5.3.1
+pip install tensorrt==8.5.3.1 # tensorrt-cu11
+
+mamba install cudatoolkit=11.8.0 -y
+
+CUDNN_PATH=$(dirname $(python -c "import nvidia.cudnn;print(nvidia.cudnn.__file__)"))
+export LD_LIBRARY_PATH=$CUDNN_PATH/lib:$CONDA_PREFIX/lib/:$LD_LIBRARY_PATH
+
 ```
 ```bash
 git clone git@github.com:BurgerAndreas/ehc.git

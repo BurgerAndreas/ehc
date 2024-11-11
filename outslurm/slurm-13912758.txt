@@ -1,0 +1,326 @@
+Mon Nov 11 13:15:43 EST 2024: Job 13912758 is allocated resources.
+Inside slurm_launcher.slrm (/var/spool/slurmd/job13912758/slurm_script). received arguments: --config /h/burgeran/ehc/LapNet/lapnet/configs/ferminet_system_configs.py --config.system.molecule_name CH4
+Submitting /h/burgeran/ehc/LapNet/main.py/main.py --config /h/burgeran/ehc/LapNet/lapnet/configs/ferminet_system_configs.py --config.system.molecule_name CH4
+Run 'mamba init' to be able to run mamba activate/deactivate
+and start a new shell session. Or use conda to activate/deactivate.
+
+2024-11-11 13:15:46.610807: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-11-11 13:15:49.495688: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1956] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+I1111 13:15:49.500866 139757253854720 main.py:46] System config:
+
+batch_size: 4096
+config_module: .ferminet_system_configs
+debug:
+  deterministic: false
+log:
+  features: false
+  local_energies: false
+  restore_path: ''
+  save_frequency: 10.0
+  save_frequency_in_step: -1
+  save_path: ''
+  stats_file_name: train_stats
+  stats_frequency: 1
+  walkers: false
+mcmc:
+  adapt_frequency: 100
+  blocks: 1
+  burn_in: 100
+  force_burn_in: false
+  init_means: !!python/tuple []
+  init_width: 1.0
+  move_width: 0.02
+  scale_by_nuclear_distance: false
+  steps: 30
+multi_host: false
+network:
+  bias_orbitals: false
+  det_filter:
+    percent: 0.1
+    step: 0
+    threshold: 0.0
+  detnet:
+    after_determinants: !!python/tuple
+    - 1
+    determinants: 16
+    hidden_dims: !!python/tuple
+    - &id001 !!python/tuple
+      - 256
+      - 4
+    - *id001
+    - *id001
+    - *id001
+  envelope_type: abs-isotropic
+  full_det: true
+  jas_w_init: 1.0
+  name: lapnet
+  orbitals_spin_split: true
+  use_last_layer: false
+  use_layernorm: false
+optim:
+  adam:
+    b1: 0.9
+    b2: 0.999
+    eps: 1.0e-08
+    eps_root: 0.0
+  clip_el: 5.0
+  el_partition_num: 0
+  forward_laplacian: true
+  iterations: 200000
+  kfac:
+    cov_ema_decay: 0.95
+    cov_update_every: 1
+    damping: 0.001
+    invert_every: 1
+    l2_reg: 0.0
+    mean_center: true
+    min_damping: 0.0001
+    momentum: 0.0
+    momentum_type: regular
+    norm_constraint: 0.001
+    register_only_generic: false
+  local_energy_outlier_width: 20.0
+  lr:
+    decay: 1.0
+    delay: 10000.0
+    rate: 0.05
+    warmup: 0
+  optimizer: kfac
+  rm_outlier: false
+pretrain:
+  basis: ccpvdz
+  burn_in_iters: 0
+  iterations: 5000
+  method: hf
+  optim: lamb
+  use_hf_sample: true
+system:
+  atom_spin_configs: !!python/tuple
+  - !!python/tuple
+    - 3
+    - 3
+  - &id002 !!python/tuple
+    - 1
+    - 0
+  - &id003 !!python/tuple
+    - 0
+    - 1
+  - *id002
+  - *id003
+  electrons: !!python/tuple
+  - 5
+  - 5
+  make_local_energy_fn: ''
+  make_local_energy_kwargs: {}
+  molecule:
+  - !!python/object:lapnet.utils.system.Atom
+    atomic_number: 6
+    charge: 6.0
+    coords: !!python/tuple
+    - 0.0
+    - 0.0
+    - 0.0
+    symbol: C
+    units: bohr
+  - !!python/object:lapnet.utils.system.Atom
+    atomic_number: 1
+    charge: 1.0
+    coords: !!python/tuple
+    - 1.18886
+    - 1.18886
+    - 1.18886
+    symbol: H
+    units: bohr
+  - !!python/object:lapnet.utils.system.Atom
+    atomic_number: 1
+    charge: 1.0
+    coords: !!python/tuple
+    - -1.18886
+    - -1.18886
+    - 1.18886
+    symbol: H
+    units: bohr
+  - !!python/object:lapnet.utils.system.Atom
+    atomic_number: 1
+    charge: 1.0
+    coords: !!python/tuple
+    - 1.18886
+    - -1.18886
+    - -1.18886
+    symbol: H
+    units: bohr
+  - !!python/object:lapnet.utils.system.Atom
+    atomic_number: 1
+    charge: 1.0
+    coords: !!python/tuple
+    - -1.18886
+    - 1.18886
+    - -1.18886
+    symbol: H
+    units: bohr
+  molecule_name: CH4
+  ndim: 3
+  pyscf_mol: null
+  set_molecule: set_ferminet_systems
+  type: 1
+  units: bohr
+use_x64: false
+
+I1111 13:15:49.597307 139757253854720 xla_bridge.py:353] Unable to initialize backend 'tpu_driver': NOT_FOUND: Unable to find driver in registry given worker: 
+I1111 13:15:49.691630 139757253854720 xla_bridge.py:353] Unable to initialize backend 'rocm': NOT_FOUND: Could not find registered platform with name: "rocm". Available platform names are: Interpreter Host CUDA
+I1111 13:15:49.692144 139757253854720 xla_bridge.py:353] Unable to initialize backend 'tpu': module 'jaxlib.xla_extension' has no attribute 'get_tpu_client'
+I1111 13:15:49.692450 139757253854720 xla_bridge.py:353] Unable to initialize backend 'plugin': xla_extension has no attributes named get_plugin_device_client. Compile TensorFlow with //tensorflow/compiler/xla/python:enable_plugin_device set to true (defaults to false) to enable this.
+I1111 13:15:49.692697 139757253854720 train.py:261] Starting QMC with 1 XLA devices per host across 1 hosts.
+#INFO: **** input file is /h/burgeran/ehc/LapNet/main.py ****
+# Copyright 2020 DeepMind Technologies Limited.
+# Copyright 2023 Bytedance Ltd. and/or its affiliate
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+"""Main wrapper for LapNet in JAX."""
+
+import sys
+
+from absl import app
+from absl import flags
+from absl import logging
+from jax.config import config as jax_config
+from lapnet import base_config
+from lapnet import train
+from ml_collections.config_flags import config_flags
+import os
+os.environ['NVIDIA_TF32_OVERRIDE']="0"
+
+logging.get_absl_handler().python_handler.stream = sys.stdout
+logging.set_verbosity(logging.INFO)
+
+# internal imports
+
+FLAGS = flags.FLAGS
+
+config_flags.DEFINE_config_file('config', None, 'Path to config file.')
+
+
+def main(_):
+  cfg = FLAGS.config
+  cfg = base_config.resolve(cfg)
+  if cfg.use_x64:
+    jax_config.update("jax_enable_x64", True)
+
+  logging.info('System config:\n\n%s', cfg)
+  train.train(cfg)
+
+
+if __name__ == '__main__':
+  app.run(main)
+#INFO: ******************** input file end ********************
+
+
+System: uname_result(system='Linux', node='gpu149.cluster.local', release='5.4.0-131-generic', version='#147~18.04.1-Ubuntu SMP Sat Oct 15 13:10:18 UTC 2022', machine='x86_64')  Threads 4
+Python 3.10.15 | packaged by conda-forge | (main, Oct 16 2024, 01:24:24) [GCC 13.3.0]
+numpy 1.22.4  scipy 1.7.3
+Date: Mon Nov 11 13:15:52 2024
+PySCF version 2.1.1
+PySCF path  /h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/pyscf
+
+[CONFIG] conf_file None
+[INPUT] verbose = 4
+[INPUT] num. atoms = 5
+[INPUT] num. electrons = 10
+[INPUT] charge = 0
+[INPUT] spin (= nelec alpha-beta = 2S) = 0
+[INPUT] symmetry False subgroup None
+[INPUT] Mole.unit = bohr
+[INPUT] Symbol           X                Y                Z      unit          X                Y                Z       unit  Magmom
+[INPUT]  1 C      0.000000000000   0.000000000000   0.000000000000 AA    0.000000000000   0.000000000000   0.000000000000 Bohr   0.0
+[INPUT]  2 H      0.629117618974   0.629117618974   0.629117618974 AA    1.188860000000   1.188860000000   1.188860000000 Bohr   0.0
+[INPUT]  3 H     -0.629117618974  -0.629117618974   0.629117618974 AA   -1.188860000000  -1.188860000000   1.188860000000 Bohr   0.0
+[INPUT]  4 H      0.629117618974  -0.629117618974  -0.629117618974 AA    1.188860000000  -1.188860000000  -1.188860000000 Bohr   0.0
+[INPUT]  5 H     -0.629117618974   0.629117618974  -0.629117618974 AA   -1.188860000000   1.188860000000  -1.188860000000 Bohr   0.0
+
+nuclear repulsion = 13.4395360295667
+number of shells = 17
+number of NR pGTOs = 54
+number of NR cGTOs = 34
+basis = ccpvdz
+ecp = {}
+CPU time:         6.96
+
+
+******** <class 'pyscf.scf.uhf.UHF'> ********
+method = UHF
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+SCF conv_tol = 1e-09
+SCF conv_tol_grad = None
+SCF max_cycles = 50
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = /tmp/tmpgoxvpiv9
+max_memory 4000 MB (current use 1964 MB)
+number electrons alpha = 5  beta = 5
+Set gradient conv threshold to 3.16228e-05
+init E= -40.0949845702128
+  alpha nocc = 5  HOMO = -0.438799362776313  LUMO = 0.155765169725906
+  beta  nocc = 5  HOMO = -0.453051372809364  LUMO = 0.155609395319373
+cycle= 1 E= -40.1905093943748  delta_E= -0.0955  |g|= 0.106  |ddm|= 1.09
+  alpha nocc = 5  HOMO = -0.554796516378497  LUMO = 0.18547645100936
+  beta  nocc = 5  HOMO = -0.5553467032486  LUMO = 0.185775559203048
+cycle= 2 E= -40.1981194728168  delta_E= -0.00761  |g|= 0.0291  |ddm|= 0.0945
+  alpha nocc = 5  HOMO = -0.53750254677086  LUMO = 0.193851305238082
+  beta  nocc = 5  HOMO = -0.537634862127263  LUMO = 0.193973018180248
+cycle= 3 E= -40.1986511611933  delta_E= -0.000532  |g|= 0.00946  |ddm|= 0.0249
+  alpha nocc = 5  HOMO = -0.542689852300352  LUMO = 0.19307774621747
+  beta  nocc = 5  HOMO = -0.542655593620586  LUMO = 0.193128874753373
+cycle= 4 E= -40.1987052574994  delta_E= -5.41e-05  |g|= 0.00127  |ddm|= 0.00805
+  alpha nocc = 5  HOMO = -0.542638033440604  LUMO = 0.193074268721251
+  beta  nocc = 5  HOMO = -0.542570642259523  LUMO = 0.193097046542504
+cycle= 5 E= -40.1987074562222  delta_E= -2.2e-06  |g|= 0.000639  |ddm|= 0.00221
+  alpha nocc = 5  HOMO = -0.542711239719984  LUMO = 0.193055580850982
+  beta  nocc = 5  HOMO = -0.542653382825221  LUMO = 0.193055591791956
+cycle= 6 E= -40.1987084554093  delta_E= -9.99e-07  |g|= 0.000182  |ddm|= 0.002
+  alpha nocc = 5  HOMO = -0.542661827399233  LUMO = 0.193063092982514
+  beta  nocc = 5  HOMO = -0.542643623571043  LUMO = 0.193061108468799
+cycle= 7 E= -40.1987085369093  delta_E= -8.15e-08  |g|= 3.18e-05  |ddm|= 0.000683
+  alpha nocc = 5  HOMO = -0.542649911335889  LUMO = 0.193068009740545
+  beta  nocc = 5  HOMO = -0.542645754076344  LUMO = 0.193067537344535
+cycle= 8 E= -40.1987085383629  delta_E= -1.45e-09  |g|= 7.05e-06  |ddm|= 7.61e-05
+  alpha nocc = 5  HOMO = -0.542649200151099  LUMO = 0.193066839551156
+  beta  nocc = 5  HOMO = -0.542648892653502  LUMO = 0.193066793768814
+cycle= 9 E= -40.1987085384304  delta_E= -6.75e-11  |g|= 8.57e-07  |ddm|= 1.74e-05
+  alpha nocc = 5  HOMO = -0.54264904560461  LUMO = 0.193066917954317
+  beta  nocc = 5  HOMO = -0.542648876953747  LUMO = 0.193066896818437
+Extra cycle  E= -40.1987085384312  delta_E= -7.53e-13  |g|= 3.18e-07  |ddm|= 1.22e-06
+converged SCF energy = -40.1987085384312  <S^2> = 3.1974423e-13  2S+1 = 1
+params initialization seed: 1731348964311040
+I1111 13:15:59.037090 139757253854720 train.py:356] No checkpoint found. Training new model.
+I1111 13:16:19.897218 139757253854720 pretrain.py:330] Pretrain iter 00000: 15.5067, logprob: -52.46
+I1111 13:16:42.211182 139757253854720 pretrain.py:330] Pretrain iter 00100: 0.0481466, logprob: -48.03
+I1111 13:16:49.760129 139757253854720 pretrain.py:330] Pretrain iter 00200: 0.0151498, logprob: -45.11
+I1111 13:16:57.336591 139757253854720 pretrain.py:330] Pretrain iter 00300: 0.00571511, logprob: -42.64
+I1111 13:17:04.924691 139757253854720 pretrain.py:330] Pretrain iter 00400: 0.00301761, logprob: -40.49
+I1111 13:17:12.524351 139757253854720 pretrain.py:330] Pretrain iter 00500: 0.00196816, logprob: -38.80
+I1111 13:17:20.146413 139757253854720 pretrain.py:330] Pretrain iter 00600: 0.001273, logprob: -37.38
+I1111 13:17:27.775791 139757253854720 pretrain.py:330] Pretrain iter 00700: 0.00100127, logprob: -36.18
+I1111 13:17:35.417740 139757253854720 pretrain.py:330] Pretrain iter 00800: 0.000613097, logprob: -35.20
+I1111 13:17:43.076001 139757253854720 pretrain.py:330] Pretrain iter 00900: 0.000512877, logprob: -34.47
+I1111 13:17:50.744654 139757253854720 pretrain.py:330] Pretrain iter 01000: 0.000383572, logprob: -33.75
+I1111 13:17:58.423312 139757253854720 pretrain.py:330] Pretrain iter 01100: 0.000358845, logprob: -33.19
+I1111 13:18:06.100717 139757253854720 pretrain.py:330] Pretrain iter 01200: 0.000280743, logprob: -32.70
+I1111 13:18:13.780061 139757253854720 pretrain.py:330] Pretrain iter 01300: 0.000226354, logprob: -32.31
+I1111 13:18:21.462124 139757253854720 pretrain.py:330] Pretrain iter 01400: 0.00019337, logprob: -31.97

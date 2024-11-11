@@ -1,0 +1,50 @@
+Mon Nov 11 12:14:12 EST 2024: Job 13912303 is allocated resources.
+Inside slurm_launcher.slrm (/var/spool/slurmd/job13912303/slurm_script). received arguments: --config lapnet/configs/ferminet_systems.py --config.system.molecule_name CH4
+Submitting /h/burgeran/ehc/LapNet/main.py/main.py --config lapnet/configs/ferminet_systems.py --config.system.molecule_name CH4
+Run 'mamba init' to be able to run mamba activate/deactivate
+and start a new shell session. Or use conda to activate/deactivate.
+
+WARNING:LapJAX:When wrapping `jax` modules `collect_profile.py`, got ImportError:
+    This script requires `tensorflow` to be installed.
+WARNING:LapJAX:This won't affect functions of other modules.
+WARNING:LapJAX:When wrapping `jax` modules `tools`, got ImportError:
+    No module named 'requests'
+WARNING:LapJAX:This won't affect functions of other modules.
+Traceback (most recent call last):
+  File "/h/burgeran/ehc/LapNet/main.py", line 51, in <module>
+    app.run(main)
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/absl/app.py", line 300, in run
+    args = _run_init(
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/absl/app.py", line 369, in _run_init
+    args = _register_and_parse_flags_with_usage(
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/absl/app.py", line 216, in _register_and_parse_flags_with_usage
+    args_to_main = flags_parser(original_argv)
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/absl/app.py", line 156, in parse_flags_with_usage
+    return FLAGS(args)
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/absl/flags/_flagvalues.py", line 646, in __call__
+    unknown_flags, unparsed_args = self._parse_args(args, known_only)
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/absl/flags/_flagvalues.py", line 796, in _parse_args
+    flag.parse(value)
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/absl/flags/_flag.py", line 168, in parse
+    self.value = self._parse(argument)
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/ml_collections/config_flags/config_flags.py", line 625, in _parse
+    overrides_types = GetTypes(overrides, config)
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/ml_collections/config_flags/config_flags.py", line 911, in GetTypes
+    return [GetType(path, config) for path in paths]
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/ml_collections/config_flags/config_flags.py", line 911, in <listcomp>
+    return [GetType(path, config) for path in paths]
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/ml_collections/config_flags/config_flags.py", line 892, in GetType
+    current = _TakeStep(current, step)
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/ml_collections/config_flags/config_flags.py", line 876, in _TakeStep
+    return _AccessConfig(current, field, indices)
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/ml_collections/config_flags/config_flags.py", line 849, in _AccessConfig
+    if isinstance(field, string_types) and hasattr(current, field):
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/ml_collections/config_flags/config_flags.py", line 469, in __getattr__
+    self._ReportError()
+  File "/h/burgeran/miniforge3/envs/ehc/lib/python3.10/site-packages/ml_collections/config_flags/config_flags.py", line 487, in _ReportError
+    raise IOError('Configuration is not available because of an earlier '
+OSError: Configuration is not available because of an earlier failure to load: Failed loading config file config_config
+  Attempted [Relative path]:
+    lapnet/configs/ferminet_systems.py
+      [Errno 2] No such file or directory: 'lapnet/configs/ferminet_systems.py'
+Mon Nov 11 12:14:37 EST 2024: Job 13912303 finished running, exit code: 0
