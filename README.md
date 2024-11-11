@@ -44,7 +44,7 @@ module load cuda-11.8
 pip3 install --upgrade jax[cuda]==0.3.24 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 
 # numpy==1.24.4
-pip install numpy==1.21.5 scipy==1.7.3 matplotlib seaborn requests
+pip install numpy==1.21.5 scipy==1.7.3 matplotlib seaborn requests tensorboard_plugin_profile
 
 git clone https://github.com/YWolfeee/lapjax.git
 pip install ./lapjax
@@ -54,8 +54,10 @@ pip install ./LapNet
 
 # something about
 # LapNet: when wrapping `jax` modules `collect_profile.py`, got importerror: this script requires `tensorflow` to be installed.
+# https://www.tensorflow.org/install/source#gpu
 # we want: https://storage.googleapis.com/tensorflow/versions/2.13.0/tensorflow-2.13.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 pip install tensorflow[and-cuda]==2.12
+pip install tensorrt==8.5.3.1
 ```
 ```bash
 git clone git@github.com:BurgerAndreas/ehc.git
