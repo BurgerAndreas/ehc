@@ -1,14 +1,22 @@
 # ehc
 
-Run
+Run in interactive session
 ```bash
 srun -c 4 --gres=gpu:rtx6000:1 --mem=16GB --pty --time=2-00:00:00 --qos=long bash
 
 mamba activate ehc
 module load cuda-11.8
 
+cd LapNet
 python3 main.py --config lapnet/configs/ferminet_systems.py --config.system.molecule_name CH4
 python3 main.py --config lapnet/configs/benzene_dimer/benzene_dimer.py:4.95 --config.pretrain.iterations 50000 --config.pretrain.basis augccpvd --config.optim.forward_laplacian=False
+```
+
+Run via sbatch
+```bash
+cd ehc
+sbatch launchslurm --config lapnet/configs/ferminet_systems.py --config.system.molecule_name CH4
+sbatch launchslurm --config lapnet/configs/benzene_dimer/benzene_dimer.py:4.95 --config.pretrain.iterations 50000 --config.pretrain.basis augccpvd --config.optim.forward_laplacian=False
 ```
 
 ## Install on slurm cluster (Vector for example)
@@ -23,6 +31,8 @@ source ~/.bashrc
 ```
 
 ```bash
+mkdir ehc; cd ehc
+
 module avail
 
 mamba deactivate
@@ -41,4 +51,8 @@ pip install ./lapjax
 
 git clone https://github.com/bytedance/LapNet.git
 pip install ./LapNet
+```
+```bash
+git clone git@github.com:BurgerAndreas/ehc.git
+cd ehc
 ```
