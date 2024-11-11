@@ -1,3 +1,7 @@
+ferminet_20*
+**/qmcjax_ckpt_*
+outslurm
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

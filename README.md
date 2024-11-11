@@ -1,4 +1,6 @@
-# ehc
+# Exact DFT by learning the exchange-hole correlation via pair-matching
+
+[More info](https://www.notion.so/thematterlab/Exchange-hole-correlation-via-pair-correlation-matching-137bef6d236c8073a54ad4a0e3e7cdcb)
 
 Run in interactive session
 ```bash
@@ -69,3 +71,12 @@ export LD_LIBRARY_PATH=$CUDNN_PATH/lib:$CONDA_PREFIX/lib/:$LD_LIBRARY_PATH
 git clone git@github.com:BurgerAndreas/ehc.git
 cd ehc
 ```
+
+## Next Steps
+
+- [] Calculate the EHCs from the VQMC wavefunctions
+- [] (Calculate the ECFs from the EHCs?)
+- [] Run DFT on EHC/ECF
+
+- [] Get more configurations/geometries from [MD17](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.datasets.MD17.html) or QM9, run VQMC on ~100-1000 
+- [] Train a NN to predict ECH/ECFs
