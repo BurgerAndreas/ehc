@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Node resource configurations
+# https://support.vectorinstitute.ai/Vaughan_slurm_changes
+#SBATCH --job-name=equilibrium-forcefields
+#SBATCH --mem=32G
+#SBATCH --cpus-per-task=4
+# a40, 48GB, gpu[001-015], gpu[027-056]
+# rtx6000, 24GB
+#SBATCH --partition=rtx6000
+#SBATCH --gres=gpu:1
+# sacctmgr list qos format=Name%15,Priority,MaxWall,MaxTRESPerUser normal,m,m2,m3,m4,m5,long
+# take either long (2 GPUS x 2days) or m (8 GPUs x 12h)
+# --account=deadline --qos=deadline --qos=long
+#SBATCH --qos=long
+#SBATCH --time=2-00:00:00 # 2-00:00:00
+#SBATCH --output=outslurm/slurm-%j.txt 
+#SBATCH --error=outslurm/slurm-%j.txt
+# errslurm-%j.err
+
+# Append is important because otherwise preemption resets the file
+#SBATCH --open-mode=append
+
+echo `date`: Job $SLURM_JOB_ID is allocated resources.
+
+# the recommendation is to keep erything that defines the workload itself in a separate script
+echo "Inside slurm_launcher.slrm ($0). received arguments: $@"
+
+HOME_DIR=/h/burgeran
+
+export SCRIPTDIR=${HOME_DIR}/ehc/LapNet/main.py
+
+# hand over all arguments to the script
+echo "Submitting ${SCRIPTDIR}/main.py $@"
+
+
+# V1
+# ${HOME_DIR}/venv10/bin/python ${SCRIPTDIR}/"$@"
+
+# V2 - works!
+# source ${HOME_DIR}/venv10/bin/activate
+# ${HOME_DIR}/venv10/bin/python ${SCRIPTDIR}/"$@"
+
+# conda
+CONDA_BASE=$(conda info --base) 
+source $CONDA_BASE/etc/profile.d/conda.sh
+mamba activate ehc
+module load cuda-11.8
+${HOME_DIR}/miniforge3/envs/ehc/bin/python ${SCRIPTDIR} "$@"
+
+echo `date`: "Job $SLURM_JOB_ID finished running, exit code: $?"
+
+# date=$(date '+%Y-%m-%d')
+# archive=$HOME/finished_jobs/$date/$SLURM_JOB_ID
+# mkdir -p $archive
+
+# echo archive $archive
+# cp ./$SLURM_JOB_ID.out $archive/job.out
+# cp ./$SLURM_JOB_ID.err $archive/job.err
+
+# usage: 
+# sbatch launchslurm.slrm --config lapnet/configs/ferminet_systems.py --config.system.molecule_name CH4
